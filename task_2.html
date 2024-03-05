@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: red;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    a {
+      color: red; 
+      text-align:center;
+    }
+    a:hover{
+      color:blue;
+    }
+    a:visited {
+      color: green;
+    }
+
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <h1>ZENTRADES</h1>
+    <input type="text" id="username" placeholder="E-mail address">
+    <input type="password" id="password" placeholder="Password">
+    
+    <button type="button" onclick="login()">Login</button>
+    <br><br>
+    <a href="#">Forgot your password?</a>
+  </form>
+
+  <script>
+    function validateEmail() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const usernameInput = document.getElementById('username');
+      const isValid = emailRegex.test(usernameInput.value);
+      if (!isValid) {
+        alert('Please enter a valid email address');
+        usernameInput.value = '';
+        return false;
+      }
+      return true;
+    }
+
+    function validatePassword() {
+      const passwordInput = document.getElementById('password');
+      const passwordValue = passwordInput.value;
+
+      if (passwordValue.includes('@') && /[A-Z]/.test(passwordValue) && /\d/.test(passwordValue)) {
+        return true;
+      } else {
+        alert('Password must contain an uppercase letter, a number, and may only include the "@" symbol as a special character.');
+        passwordInput.value = '';
+        return false;
+      }
+    }
+
+    function login() {
+      // Add your login logic here
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      validateEmail();
+      validatePassword();
+    }
+  </script>
+</body>
+</html>
